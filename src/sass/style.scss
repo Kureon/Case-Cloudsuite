@@ -241,7 +241,7 @@ a {
         display: inline-block;
         width: 16px;
         height: 8px;
-        background-image: url("/assets/images/icon-chevron.svg");
+        background-image: url("../assets/images/icon-chevron.svg");
         background-position: bottom;
         background-repeat: no-repeat;
         transform: rotate(180deg);
@@ -296,7 +296,7 @@ a {
             display: inline-block;
             width: 18px;
             height: 17px;
-            background-image: url("/assets/images/icon-search.svg");
+            background-image: url("../assets/images/icon-search.svg");
             background-position: bottom;
             background-repeat: no-repeat;
         }
@@ -308,7 +308,7 @@ a {
         width: 18px;
         height: 20px;
         margin-right: .5rem;
-        background-image: url("/assets/images/icon-user.svg");
+        background-image: url("../assets/images/icon-user.svg");
         background-position: bottom;
         background-repeat: no-repeat;
     }
@@ -319,7 +319,7 @@ a {
         width: 21px;
         height: 20px;
         margin-right: .5rem;
-        background-image: url("/assets/images/icon-basket.svg");
+        background-image: url("../assets/images/icon-basket.svg");
         background-position: bottom;
         background-repeat: no-repeat;
     }
