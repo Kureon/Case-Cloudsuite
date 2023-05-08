@@ -1,0 +1,361 @@
+/* ============================== */
+/* Table of contents              */
+/* ============================== */
+
+// 01. Css reset 
+// 02. Custom properties
+// 03. Utility classes
+// 04. General styling
+// 05. Header
+// 06. Hero
+
+/* ============================== */
+/* Css reset                      */
+/* ============================== */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Remove default styling on button element */
+button {
+    border: 0;
+    box-shadow: none;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------- */
+/* Custom properties               */
+/* ------------------------------- */
+
+:root {
+    // colors
+    --clr-accent-500: 51 76% 51%;
+    --clr-accent-400: 51 92% 55%;
+    --clr-neutral-400: 0 0% 29%;
+    --clr-neutral-100: 0 0% 100%;
+
+    // font-families
+    --ff-primary: "Roboto", sans-serif;
+    --ff-heading: "Gochi Hand", cursive;
+
+    // font-sizes
+    --fs-700: 4.5rem;
+    --fs-500: 1.375rem;
+    --fs-400: 1.125rem;
+    --fs-300: 1rem;
+
+    // font-weight
+    --fw-regular: 400;
+    --fw-bold: 700;
+
+    // spacing
+    --container-spacing: 3rem;
+}
+
+/* ============================== */
+/* Utility classes                */
+/* ============================== */
+
+// text colors
+.text-neutral-400 {
+    color: hsl( var(--clr-neutral-400) );
+}
+.text-neutral-100 {
+    color: hsl( var(--clr-neutral-100) );
+}
+
+// background colors
+.bg-neutral-100 {
+    background-color: hsl( var(--clr-neutral-100) );
+}
+
+// typography
+.fw-regular {
+    font-weight: var(--fw-regular);
+}
+.fw-bold {
+    font-weight: var(--fw-bold);
+}
+
+// layout 
+.flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+.grid {
+    display: grid;
+    gap: var(--gap, 1rem);
+}
+
+.container {
+    padding-inline: 2em;
+    margin-inline: auto;
+    max-width: 85em;
+}
+
+/* ============================== */
+/* General styling                */
+/* ============================== */
+body {
+    font-size: var(--fs-300);
+    font-family: var(--ff-primary);
+    color: hsl( var(--clr-neutral-400) )
+}
+
+a {
+    color: hsl( var(--clr-neutral-400) );
+
+    &:hover,
+    &:focus {
+        color: hsl(var(--clr-accent-400));
+    }
+}
+
+.button {
+    display: inline-flex;
+    cursor: pointer;
+    text-decoration: none;
+    border: 0;
+    border-radius: 100vmax;
+    padding: 1.25em 2.5em;
+    margin-bottom: 1.75rem;
+    font-family: var(--ff-primary);
+    font-weight: hsl(var(--fw-bold));
+    font-size: var(--fs-400);
+    line-height: 1;
+    color: hsl(var(--clr-neutral-100));
+    background-color: hsl(var(--clr-accent-400));
+    box-shadow: 0 1.125em 1em -1em hsl(var(--clr-neutral-400));;
+    transition: all 300ms ease-in-out;
+    transition-property: color, background-color;
+}
+
+.button:hover,
+.button:focus-visible {
+    color: hsl( var(--clr-neutral-100) );
+    background-color: hsl(var(--clr-accent-500));
+}
+
+/* ============================== */
+/* Header                         */
+/* ============================== */
+
+.primary-header {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-evenly;
+    align-items: center;
+    padding-inline: 2rem;
+    padding-block: 1rem;
+    font-weight: var(--fw-bold);
+    transition: background-color 500ms ease-in-out;
+    // background-color: transparent;
+}
+
+//  navigation
+.nav-list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+
+    ul {
+        display: none;
+        list-style: none;
+    }
+
+    & a {
+        text-decoration: none;
+    }
+
+    .dropdown {
+        cursor: pointer;
+    }
+
+    .dropdown::after {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 8px;
+        background-image: url("/assets/images/icon-chevron.svg");
+        background-position: bottom;
+        background-repeat: no-repeat;
+        transform: rotate(180deg);
+    }
+
+    .dropdown:hover ul {
+        display: block;
+    }
+    .dropdown-list {
+        position: absolute;
+        width: 250px;
+        padding: 1.875rem;
+        background: hsl( var(--clr-neutral-100) );
+        line-height: 2;
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+
+}
+
+.logo {
+    margin: 0 auto;
+}
+
+.utility-nav {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 2rem;
+
+    a {
+        text-decoration: none;
+    }
+
+    .search {
+        position: relative;
+        padding: .25rem 1rem;
+        border: 1px solid hsl( var(--clr-neutral-400) );
+        border-radius: 50px;
+        background: transparent;
+
+        input {
+            padding: 0;
+            background: transparent;
+            border: none;
+        }
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 18px;
+            height: 17px;
+            background-image: url("/assets/images/icon-search.svg");
+            background-position: bottom;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .account::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 20px;
+        margin-right: .5rem;
+        background-image: url("/assets/images/icon-user.svg");
+        background-position: bottom;
+        background-repeat: no-repeat;
+    }
+
+    .shopping-basket::before {
+        content: "";
+        display: inline-block;
+        width: 21px;
+        height: 20px;
+        margin-right: .5rem;
+        background-image: url("/assets/images/icon-basket.svg");
+        background-position: bottom;
+        background-repeat: no-repeat;
+    }
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    width: auto;
+    overflow: hidden;
+
+    .hero-img {
+        width: 100%;
+        height: fit-content;
+        object-fit: cover; 
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(131, 182, 210, 0.9);
+    }
+}
+
+.hero-content {
+    position: absolute;
+    top: 30%;
+    z-index: 1;
+
+    h1 {
+        margin-bottom: 1rem;
+        max-width: 15ch;
+        font-family: var(--ff-heading);
+        font-size: var(--fs-700);
+        line-height: 1.2;
+        color: hsl( var(--clr-neutral-100) );
+    }
+}
